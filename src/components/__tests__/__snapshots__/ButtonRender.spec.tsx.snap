@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseButton renders correctly 1`] = `
+<styled.div>
+  <styled.button>
+    Test
+  </styled.button>
+</styled.div>
+`;
