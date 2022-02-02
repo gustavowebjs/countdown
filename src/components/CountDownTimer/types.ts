@@ -1,7 +1,10 @@
-export type CountDownProps = {
-  hoursMinSecs: {
-    hours: number;
-    minutes: number;
-    seconds: number;
-  };
+export type TimeFormat = {
+  minutes: number;
+  seconds: number;
+};
+
+export type TimerProps = {
+  timeFormat: TimeFormat;
+  active?: boolean;
+  speed?: number;
 };

@@ -21,10 +21,26 @@ export const CountDown = styled.div`
   margin-top: 150px;
 `;
 
+export const WrapperInput = styled.div`
+  display: flex;
+  align-items: end;
+  margin-bottom: 20px;
+  width: 100%;
+`;
+
 export const WrapperTimer = styled.div``;
 
 export const Timer = styled.div`
-  font-size: 6.2rem;
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.neutral.dark};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SpeedButtons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: auto;
+  margin-bottom: 20px;
 `;

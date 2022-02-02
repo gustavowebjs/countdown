@@ -1,38 +1,50 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import * as T from './types';
+import * as S from './styles';
 
-const CountDownTimer = ({ hoursMinSecs }: T.CountDownProps) => {
-  const { hours = 0, minutes = 0, seconds = 60 } = hoursMinSecs;
-
-  const [[hrs, mins, secs], setTime] = React.useState([
-    hours,
+const CountDownTimer = ({
+  timeFormat,
+  active = false,
+  speed = 1000,
+}: T.TimerProps) => {
+  const { minutes = 20, seconds = 60 } = timeFormat;
+  const [timesUp, setTimesUp] = useState<boolean>(false);
+  const [[mins, secs], setTime] = useState<[number, number]>([
     minutes,
     seconds,
   ]);
 
-  const tick = () => {
-    if (hrs === 0 && mins === 0 && secs === 0) {
-      alert('Time is up');
-    } else if (mins === 0 && secs === 0) {
-      setTime([hrs - 1, 59, 59]);
+  const tick = (): void => {
+    if (mins === 0 && secs === 0) {
+      setTimesUp(true);
     } else if (secs === 0) {
-      setTime([hrs, mins - 1, 59]);
+      setTime([mins - 1, 59]);
     } else {
-      setTime([hrs, mins, secs - 1]);
+      setTime([mins, secs - 1]);
     }
   };
 
-  React.useEffect(() => {
-    const timerId = setInterval(() => tick(), 1000);
-    return () => clearInterval(timerId);
+  const formatTimeToRender = (mins: number, secs: number): string => {
+    return `${mins.toString().padStart(2, '0')}:${secs
+      .toString()
+      .padStart(2, '0')}`;
+  };
+
+  useEffect(() => {
+    if (active === true && !timesUp) {
+      const timerId = setInterval(() => tick(), speed);
+      return () => clearInterval(timerId);
+    }
   });
 
+  useEffect(() => {
+    setTime([minutes, seconds]);
+  }, [timeFormat]);
+
   return (
-    <div>
-      {`${hrs.toString().padStart(2, '0')}:${mins
-        .toString()
-        .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}
-    </div>
+    <S.Container active={active}>
+      <p>{formatTimeToRender(mins, secs)}</p>
+    </S.Container>
   );
 };
 

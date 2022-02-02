@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseButton renders correctly 1`] = `
+exports[`Button Component Should renders correctly 1`] = `
 <styled.div>
-  <styled.button>
+  <styled.button
+    size="medium"
+  >
     Test
   </styled.button>
 </styled.div>
