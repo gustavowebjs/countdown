@@ -10,7 +10,7 @@ const ThemeSwitcher = (): ReactElement => {
 
   return (
     <S.Container>
-      <Light />
+      <Dark />
       <Switch
         onChange={toggleTheme}
         checked={theme.title === 'light'}
@@ -19,7 +19,7 @@ const ThemeSwitcher = (): ReactElement => {
         offColor={theme.colors.secondary}
         onColor={theme.colors.primary}
       />
-      <Dark />
+      <Light />
     </S.Container>
   );
 };
