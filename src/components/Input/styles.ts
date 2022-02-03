@@ -10,7 +10,7 @@ export const Input = styled.input`
   border-radius: 6px;
   height: 42px;
 
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 28px;
   color: ${({ theme }) => theme.colors.darker};

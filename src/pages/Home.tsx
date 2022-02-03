@@ -7,7 +7,7 @@ import { ReactComponent as StartSVG } from '../assets/svgs/start.svg';
 import * as S from './styles';
 import { getDateTimeByTZ } from '../helpers/GetDateTimeByTZ';
 
-function Home(): ReactElement {
+const Home = (): ReactElement => {
   const [activeTimer, setActiveTimer] = useState(false);
   const [timerSpeed, setTimerSpeed] = useState(1000);
   const [isTimesUp, setIsTimesUp] = useState(false);
@@ -126,6 +126,6 @@ function Home(): ReactElement {
       </S.CountDown>
     </S.Container>
   );
-}
+};
 
 export default Home;

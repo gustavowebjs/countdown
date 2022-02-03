@@ -16,6 +16,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, T.InputProps> = (
     autoComplete,
     length,
     onChange,
+    className,
   } = props;
 
   return (
@@ -23,6 +24,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, T.InputProps> = (
       {label && <Label text={label} />}
 
       <S.Input
+        className={className}
         autoComplete={autoComplete}
         type={type}
         name={name}

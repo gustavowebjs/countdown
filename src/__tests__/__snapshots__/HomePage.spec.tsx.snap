@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page Should Home Page render correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        <ForwardRef(Input)
+          label="Set minutes"
+          length={2}
+          name="minutes"
+          onChange={[Function]}
+          placeholder="MM"
+          type="number"
+        />
+        <Button
+          className="outline"
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 5,
+            }
+          }
+        >
+          <ForwardRef(SvgStart) />
+          Start
+        </Button>
+      </styled.div>
+      <styled.div>
+        <CountDownTimer
+          active={false}
+          onComplete={[Function]}
+          speed={1000}
+          timeFormat={
+            Object {
+              "minutes": 0,
+              "seconds": 0,
+            }
+          }
+        />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

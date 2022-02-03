@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component Should input component render correctly 1`] = `
+<styled.div>
+  <styled.input
+    className="input"
+    placeholder="Email"
+  />
+</styled.div>
+`;

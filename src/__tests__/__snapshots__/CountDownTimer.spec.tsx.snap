@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountDownTimer Component Should Countdown component render correctly 1`] = `
+<styled.div
+  active={false}
+  styleText=""
+>
+  <styled.h3>
+     
+  </styled.h3>
+  <p>
+    20:00
+  </p>
+</styled.div>
+`;
