@@ -1,11 +1,16 @@
 import { ReactElement, useState } from 'react';
 import { Button, CountDownTimer, Input } from '../components';
 import { TimeFormat } from '../components/CountDownTimer/types';
+import { ReactComponent as PlaySVG } from '../assets/svgs/play.svg';
+import { ReactComponent as PauseSVG } from '../assets/svgs/pause.svg';
+import { ReactComponent as StartSVG } from '../assets/svgs/start.svg';
 import * as S from './styles';
+import { getDateTimeByTZ } from '../helpers/GetDateTimeByTZ';
 
 function Home(): ReactElement {
   const [activeTimer, setActiveTimer] = useState(false);
   const [timerSpeed, setTimerSpeed] = useState(1000);
+  const [isTimesUp, setIsTimesUp] = useState(false);
   const [timerFormat, setTimerFormat] = useState<TimeFormat>({
     minutes: 0,
     seconds: 0,
@@ -30,6 +35,7 @@ function Home(): ReactElement {
       });
 
       setActiveTimer(true);
+      setIsTimesUp(false);
     }
   };
 
@@ -51,45 +57,71 @@ function Home(): ReactElement {
               onClick={() => handleStartTimer()}
               style={{ marginLeft: 5 }}
             >
+              <StartSVG />
               Start
             </Button>
           </S.WrapperInput>
-
           <S.Timer>
             <CountDownTimer
+              onComplete={() => setIsTimesUp(true)}
               speed={timerSpeed}
               active={activeTimer}
               timeFormat={timerFormat}
             />
           </S.Timer>
+          {timerFormat.minutes > 0 && !isTimesUp && (
+            <>
+              <S.SpeedButtons>
+                <Button
+                  className={`outline ${timerSpeed === 1000 ? 'active' : ''}`}
+                  size="small"
+                  onClick={() => setTimerSpeed(1000)}
+                >
+                  Normal
+                </Button>
+                <Button
+                  className={`outline ${timerSpeed === 750 ? 'active' : ''}`}
+                  size="small"
+                  onClick={() => setTimerSpeed(750)}
+                >
+                  1.5x
+                </Button>
+                <Button
+                  className={`outline ${timerSpeed === 500 ? 'active' : ''}`}
+                  size="small"
+                  onClick={() => setTimerSpeed(500)}
+                >
+                  2.0x
+                </Button>
+              </S.SpeedButtons>
 
-          <S.SpeedButtons>
-            <Button
-              className={`outline ${timerSpeed === 1000 ? 'active' : ''}`}
-              size="small"
-              onClick={() => setTimerSpeed(1000)}
-            >
-              Normal
-            </Button>
-            <Button
-              className={`outline ${timerSpeed === 750 ? 'active' : ''}`}
-              size="small"
-              onClick={() => setTimerSpeed(750)}
-            >
-              1.5x
-            </Button>
-            <Button
-              className={`outline ${timerSpeed === 500 ? 'active' : ''}`}
-              size="small"
-              onClick={() => setTimerSpeed(500)}
-            >
-              2.0x
-            </Button>
-          </S.SpeedButtons>
+              <S.WrapperSvg>
+                {activeTimer ? (
+                  <PauseSVG onClick={() => setActiveTimer(!activeTimer)} />
+                ) : (
+                  <PlaySVG onClick={() => setActiveTimer(!activeTimer)} />
+                )}
+                <p>{activeTimer ? 'Pause' : 'Resume'}</p>
+              </S.WrapperSvg>
+            </>
+          )}
 
-          <Button onClick={() => setActiveTimer(!activeTimer)}>
-            {activeTimer ? 'Pause' : 'Start'}
-          </Button>
+          {isTimesUp && (
+            <S.OfficeTimeWrapper>
+              <h4>Deployment Time!</h4>
+              <p>
+                <strong>London:</strong> {getDateTimeByTZ('Europe/London')}
+              </p>
+              <p>
+                <strong> New York: </strong>
+                {getDateTimeByTZ('America/New_York')}
+              </p>
+              <p>
+                <strong>Salt Lake City:</strong>{' '}
+                {getDateTimeByTZ('America/Denver')}
+              </p>
+            </S.OfficeTimeWrapper>
+          )}
         </S.WrapperTimer>
       </S.CountDown>
     </S.Container>

@@ -1,10 +1,10 @@
-const light = {
-  title: 'light',
+const dark = {
+  title: 'dark',
   colors: {
-    background: '#f6f6f6',
+    background: '#222222',
     neutral: {
-      lightest: '#FFFFFF',
-      dark: '#333333',
+      lightest: '#333333',
+      dark: '#ffffff',
     },
     primary: '#ff9000',
     secondary: '#333333',
@@ -16,4 +16,4 @@ const light = {
   },
 };
 
-export { light };
+export { dark };

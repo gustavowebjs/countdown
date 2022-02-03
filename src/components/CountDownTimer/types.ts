@@ -7,4 +7,5 @@ export type TimerProps = {
   timeFormat: TimeFormat;
   active?: boolean;
   speed?: number;
+  onComplete?: () => void;
 };

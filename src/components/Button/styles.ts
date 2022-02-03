@@ -13,9 +13,13 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button<ButtonStyledProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
   background: ${({ theme }) => theme.colors.primary};
   height: 42px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 0;
   padding: 0 25px;
   color: #312e38;

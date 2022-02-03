@@ -6,6 +6,5 @@ export type InputProps = {
   autoComplete?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  errorMessage?: string;
   length?: number;
 };

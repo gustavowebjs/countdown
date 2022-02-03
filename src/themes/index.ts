@@ -1,6 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+interface DefaultTheme {
+  theme: {
+    colors: {
+      [key: string]: string;
+    };
+  };
+}
+
+const GlobalStyles = createGlobalStyle<DefaultTheme>`
   * {
     border: 0;
     margin: 0;
@@ -20,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #f6f6f6;
+    background: ${({ theme }) => theme.colors.background};
   }
 
   a{
